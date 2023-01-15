@@ -6,6 +6,9 @@ yarn-error.log
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
+!app/storage/public/assets
+!app/storage/public/assets/avatar
+!app/storage/public/assets/avatar/default_avatar.png
 
 # Laravel 5 & Lumen specific
 public/storage
@@ -21,3 +24,13 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+
+# macOS Files
+.DS_Store
+
+# Asset Generated CSS
+public/css/global.css
+
+# Asset Generated JS
+public/js/global.js
