@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PermissionResource\Pages;
 use App\Filament\Resources\PermissionResource\RelationManagers;
+use App\Filament\Resources\RoleResource\Widgets;
 use App\Models\Permission;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -90,5 +91,12 @@ class PermissionResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            Widgets\StatsOverview::class,
+        ];
     }
 }
