@@ -16,4 +16,11 @@ class ListPermissions extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            PermissionResource\Widgets\StatsOverview::class,
+        ];
+    }
 }

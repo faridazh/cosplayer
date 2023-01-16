@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\RoleResource\Widgets;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Pages\Page;
@@ -155,5 +156,12 @@ class UserResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            Widgets\StatsOverview::class,
+        ];
     }
 }
