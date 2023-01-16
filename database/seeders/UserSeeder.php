@@ -45,6 +45,16 @@ class UserSeeder extends Seeder
                 'updated_at' => $dateTime,
                 'deleted_at' => null,
             ],
+            [
+                'username' => 'Cosplayer',
+                'email' => 'cosplayer@cosplayer.test',
+                'password' => Hash::make('test-cosplayer'),
+                'email_verified_at' => $dateTime,
+                'remember_token' => Str::random(60),
+                'created_at' => $dateTime,
+                'updated_at' => $dateTime,
+                'deleted_at' => null,
+            ],
         ];
 
         User::insert($data);

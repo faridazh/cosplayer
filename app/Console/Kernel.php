@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(CountUsers::dispatch())->daily();
         $schedule->job(CountRoles::dispatch())->daily();
         $schedule->job(CountPermissions::dispatch())->daily();
+        $schedule->command('activitylog:clean')->daily();
     }
 
     protected function commands()
