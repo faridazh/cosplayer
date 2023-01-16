@@ -51,6 +51,9 @@ class RoleAndPermissionSeeder extends Seeder
             'view-any-permission',
             'view-permission',
             'update-permission',
+            // Activity Logs
+            'view-any-activity-log',
+            'view-activity-log',
         ];
 
         foreach ($permissions as $permission) {
@@ -78,10 +81,14 @@ class RoleAndPermissionSeeder extends Seeder
             'view-any-permission',
             'view-permission',
             'update-permission',
+            // Activity Logs
+            'view-any-activity-log',
+            'view-activity-log',
         ]);
 
         User::find(1)->syncRoles('super-admin');
         User::find(2)->syncRoles('admin');
         User::find(3)->syncRoles('moderator');
+        User::find(4)->syncRoles('cosplayer');
     }
 }
