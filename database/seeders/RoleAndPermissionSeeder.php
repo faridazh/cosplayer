@@ -54,6 +54,10 @@ class RoleAndPermissionSeeder extends Seeder
             // Activity Logs
             'view-any-activity-log',
             'view-activity-log',
+            // Manage Jobs Failed
+            'manage-failed-jobs',
+            // Logs Viewer
+            'access-logs-viewer',
         ];
 
         foreach ($permissions as $permission) {
