@@ -17,6 +17,7 @@ class RoleAndPermissionSeeder extends Seeder
         Role::create(['name' => 'super-admin']);
         $admin = Role::create(['name' => 'admin']);
         $mod = Role::create(['name' => 'moderator']);
+        $cosplayer = Role::create(['name' => 'cosplayer']);
 
 //        $resources = [
 //            'view-any',
@@ -58,6 +59,8 @@ class RoleAndPermissionSeeder extends Seeder
             'manage-failed-jobs',
             // Logs Viewer
             'access-logs-viewer',
+            // Application Health
+            'access-health-check',
         ];
 
         foreach ($permissions as $permission) {
@@ -88,6 +91,8 @@ class RoleAndPermissionSeeder extends Seeder
             // Activity Logs
             'view-any-activity-log',
             'view-activity-log',
+            // Application Health
+            'access-health-check',
         ]);
 
         User::find(1)->syncRoles('super-admin');

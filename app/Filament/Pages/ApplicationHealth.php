@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Filament\Pages;
+
+use Carbon\Carbon;
+use Filament\Pages\Actions\ButtonAction;
+use Filament\Pages\Page;
+use Illuminate\Support\Facades\Artisan;
+use Spatie\Health\Commands\RunHealthChecksCommand;
+use Spatie\Health\ResultStores\ResultStore;
+
+class ApplicationHealth extends Page
+{
+    protected static string $view = 'filament.pages.application-health';
+
+    protected $listeners = ['refreshComponent' => '$refresh'];
+
+    protected static ?string $navigationIcon = 'heroicon-o-heart';
+
+    protected function getActions(): array
+    {
+        return [
+            ButtonAction::make(__('filament-spatie-health::health.pages.health_check_results.buttons.refresh'))->action('refresh'),
+        ];
+    }
+
+    protected function getHeading(): string
+    {
+        return __('filament-spatie-health::health.pages.health_check_results.heading');
+    }
+
+    protected static function getNavigationGroup(): ?string
+    {
+//        return __('filament-spatie-health::health.pages.health_check_results.navigation.group');
+        return 'System';
+    }
+
+    protected static function getNavigationLabel(): string
+    {
+        return __('filament-spatie-health::health.pages.health_check_results.navigation.label');
+    }
+
+    protected function getViewData(): array
+    {
+        $checkResults = app(ResultStore::class)->latestResults();
+
+        return [
+            'lastRanAt' => new Carbon($checkResults?->finishedAt),
+            'checkResults' => $checkResults,
+        ];
+    }
+
+    public function refresh(): void
+    {
+        Artisan::call(RunHealthChecksCommand::class);
+
+        $this->emitSelf('refreshComponent');
+    }
+}
