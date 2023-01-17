@@ -15,8 +15,10 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "ryangjchandler/filament-log": "^0.2.1",
+        "shuvroroy/filament-spatie-laravel-health": "^1.6",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-permission": "^5.8",
+        "spatie/security-advisories-health-check": "^1.0",
         "z3d0x/filament-logger": "^0.4.2"
     },
     "require-dev": {
