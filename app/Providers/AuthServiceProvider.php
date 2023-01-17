@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use App\Policies\ActivityPolicy;
-use Spatie\Activitylog\Models\Activity;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -15,6 +13,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Role' => 'App\Policies\RolePolicy',
         'App\Models\Permission' => 'App\Policies\PermissionPolicy',
         'Spatie\Activitylog\Models\Activity' => 'App\Policies\ActivityPolicy',
+        'Amvisor\FilamentFailedJobs\Models\FailedJob' => 'App\Policies\FailedJobPolicy',
+        'Amvisor\FilamentFailedJobs\Models\JobBatch'  => 'App\Policies\JobBatchPolicy',
     ];
 
     public function boot()

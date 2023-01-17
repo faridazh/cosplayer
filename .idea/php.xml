@@ -132,6 +132,8 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-activitylog" />
       <path value="$PROJECT_DIR$/vendor/z3d0x/filament-logger" />
       <path value="$PROJECT_DIR$/vendor/cms-multi/filament-clear-cache" />
+      <path value="$PROJECT_DIR$/vendor/invaders-xx/filament-jsoneditor" />
+      <path value="$PROJECT_DIR$/vendor/amvisor/filament-failed-jobs" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
