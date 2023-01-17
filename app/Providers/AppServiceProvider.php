@@ -18,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
         Filament::serving(function () {
             Filament::registerNavigationGroups([
                 NavigationGroup::make()->label('Accounts'),
+                NavigationGroup::make()->label('Logs')->collapsed(),
                 NavigationGroup::make()->label('Settings')->collapsed(),
+                NavigationGroup::make()->label('System')->collapsed(),
             ]);
         });
     }

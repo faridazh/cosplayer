@@ -134,6 +134,7 @@
       <path value="$PROJECT_DIR$/vendor/cms-multi/filament-clear-cache" />
       <path value="$PROJECT_DIR$/vendor/invaders-xx/filament-jsoneditor" />
       <path value="$PROJECT_DIR$/vendor/amvisor/filament-failed-jobs" />
+      <path value="$PROJECT_DIR$/vendor/ryangjchandler/filament-log" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">

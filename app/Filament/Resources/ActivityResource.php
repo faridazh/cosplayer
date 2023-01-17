@@ -30,7 +30,7 @@ use Spatie\Activitylog\Models\Activity;
 class ActivityResource extends Resource
 {
     protected static ?string $model = Activity::class;
-    protected static ?string $label = 'Activity Log';
+
     protected static ?string $slug = 'activity-logs';
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-list';
@@ -310,7 +310,8 @@ class ActivityResource extends Resource
 
     protected static function getNavigationGroup(): ?string
     {
-        return __('filament-logger::filament-logger.nav.group');
+//        return __('filament-logger::filament-logger.nav.group');
+        return 'Logs';
     }
 
     protected static function getNavigationLabel(): string
