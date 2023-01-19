@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+require_once __DIR__ . '/auth.php';
+
+Route::middleware(['auth'])->group(function () {
+    //
 });
+
+Route::get('/', \App\Http\Controllers\Public\Home::class)->name('homepage');

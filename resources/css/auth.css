@@ -1,0 +1,13 @@
+.auth {
+    @apply flex flex-col items-center justify-center;
+    @apply min-h-screen py-5;
+}
+header {
+    @apply mb-5 !border-b-0 !shadow-none;
+}
+footer {
+    @apply mt-5 !border-t-0;
+}
+.alert {
+    @apply text-center;
+}

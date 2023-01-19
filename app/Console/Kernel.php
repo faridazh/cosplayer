@@ -8,7 +8,6 @@ use App\Jobs\CountUsers;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Spatie\Health\Commands\RunHealthChecksCommand;
-use Spatie\Health\Commands\DispatchQueueCheckJobsCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -23,7 +22,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('activitylog:clean')->daily();
         // Spatie Health
         $schedule->command(RunHealthChecksCommand::class)->everyMinute();
-        $schedule->command(DispatchQueueCheckJobsCommand::class)->everyMinute();
     }
 
     protected function commands()

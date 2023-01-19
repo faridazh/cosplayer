@@ -13,9 +13,9 @@ return [
             'keep_history_for_days' => 7,
         ],
 
-        Spatie\Health\ResultStores\CacheHealthResultStore::class => [
-            'store' => 'file',
-        ],
+//        Spatie\Health\ResultStores\CacheHealthResultStore::class => [
+//            'store' => 'file',
+//        ],
 
 //        Spatie\Health\ResultStores\JsonFileHealthResultStore::class => [
 //            'disk' => 's3',
