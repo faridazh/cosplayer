@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-white;
+        @apply w-full mx-auto;
+        @apply text-base leading-6;
+        @apply antialiased min-h-screen text-gray-900;
+    }
+
+    header {
+        @apply bg-white border-b top-0 z-10;
+        @apply shadow;
+    }
+    .header {
+        @apply py-4 px-5;
+        @apply flex items-center justify-between;
+    }
+
+    footer {
+        @apply bg-white border-t sticky top-[100vh];
+    }
+    .footer {
+        @apply py-10 px-5 md:space-x-5;
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5;
+    }
+    .footer .links {
+        @apply md:text-right;
+    }
+    .footer .links .body {
+        @apply space-y-1;
+    }
+    .footer .about {
+        @apply col-span-1 sm:col-span-2;
+    }
+    .footer .title {
+        @apply text-lg font-medium tracking-wider underline underline-offset-8 mb-5;
+    }
+    footer .credits {
+        @apply py-5 px-5;
+        @apply flex flex-col md:flex-row items-center justify-between;
+        @apply space-y-3 md:space-y-0;
+        @apply text-sm text-gray-500;
+    }
+    footer .credits a {
+        @apply text-gray-900 hover:text-primary;
+    }
+    footer .credits div {
+        @apply text-center;
+    }
+    .header, .footer, footer .credits {
+        @apply max-w-screen-xl mx-auto;
+    }
+    .main {
+        @apply max-w-screen-xl mx-auto;
+        @apply px-5;
+    }
+    .main section:first-child {
+        @apply mt-5;
+    }
+    .main section:last-child {
+        @apply mb-5;
+    }
+}
+
+@layer components {
+    a:not(.btn) {
+        @apply text-primary hover:text-palette-3;
+        @apply transition ease-in-out duration-200;
+    }
+    .form-group {
+        @apply w-full sm:w-96 bg-white shadow-lg mx-auto p-5 rounded-lg border border-gray-300;
+    }
+    .text-group {
+        @apply mb-5 space-y-2;
+    }
+    label {
+        @apply text-sm;
+    }
+    .textbox, input[type='text'], input[type='number'], input[type='email'] {
+        @apply w-full px-3 py-2 rounded-md border-2 border-gray-200 focus:border-primary outline-none;
+    }
+    .checkbox-group {
+        @apply flex items-center space-x-2 space-y-0;
+    }
+    .checkbox-group label {
+        @apply cursor-pointer;
+    }
+    input[type="checkbox"] {
+        @apply h-4 w-4 cursor-pointer appearance-none rounded border-2 border-primary/70 checked:bg-primary checked:border-primary;
+    }
+    .button-group {
+        @apply mt-10 space-y-3;
+    }
+    .btn {
+        @apply w-full px-3 py-2 font-medium rounded-md border text-white hover:ring-1 hover:ring-transparent;
+        @apply transition ease-in-out duration-200;
+    }
+    .btn-small {
+        @apply !py-1 !px-2 !text-sm;
+    }
+    .btn-primary {
+        @apply bg-primary hover:ring-primary/50;
+    }
+    .btn-secondary {
+        @apply bg-gray-500 hover:ring-gray-500/50;
+    }
+    .btn-tertiary {
+        @apply text-black;
+        @apply bg-white hover:ring-gray-300/50;
+    }
+    .btn-disabled {
+        @apply bg-white text-gray-300;
+    }
+    .btn-error {
+        @apply bg-error hover:ring-error/50;
+    }
+    .btn-success {
+        @apply bg-green-300 hover:ring-green-300/50;
+    }
+    .btn-danger {
+        @apply bg-orange-300 hover:ring-orange-300/50;
+    }
+    .btn-warning {
+        @apply bg-yellow-300 hover:ring-yellow-300/50;
+    }
+    .alert {
+        @apply py-2 px-3 border rounded-md my-5;
+    }
+    .alert-error {
+        @apply border-red-300 bg-red-200 text-red-700;
+    }
+    .alert-danger {
+        @apply border-orange-300 bg-orange-200 text-orange-700;
+    }
+    .alert-warning {
+        @apply border-yellow-300 bg-yellow-200 text-yellow-700;
+    }
+    .alert-success {
+        @apply border-green-300 bg-green-200 text-green-700;
+    }
+    .alert-visited {
+        @apply border-purple-300 bg-purple-200 text-purple-700;
+    }
+    .alert-info {
+        @apply border-blue-300 bg-blue-200 text-blue-700;
+    }
+    .alert-secondary {
+        @apply border-gray-300 bg-gray-200 text-gray-700;
+    }
+}

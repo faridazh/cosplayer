@@ -189,6 +189,12 @@ return [
         /*
          * Package Service Providers...
          */
+        // Spatie Roles And Permissions
+        Spatie\Permission\PermissionServiceProvider::class,
+        // Intervention Image
+        Intervention\Image\ImageServiceProvider::class,
+        // SweetAlert
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -198,11 +204,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // Spatie Roles And Permissions
-        Spatie\Permission\PermissionServiceProvider::class,
-        // Intervention Image
-        Intervention\Image\ImageServiceProvider::class,
-
+        // Fortify
+        App\Providers\FortifyServiceProvider::class,
     ],
 
     /*
@@ -220,6 +223,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         // Intervention Image
         'Image' => Intervention\Image\Facades\Image::class,
+        // SweetAlert
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];
