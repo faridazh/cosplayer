@@ -21,7 +21,7 @@ class Kernel extends ConsoleKernel
         // Activity Logs
         $schedule->command('activitylog:clean')->daily();
         // Spatie Health
-        $schedule->command(RunHealthChecksCommand::class)->everyFiveMinutes();
+        $schedule->command(RunHealthChecksCommand::class)->everyMinute();
     }
 
     protected function commands()
