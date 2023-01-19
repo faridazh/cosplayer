@@ -2,12 +2,12 @@
     @apply flex flex-col items-center justify-center;
     @apply min-h-screen py-5;
 }
-.auth header {
-    @apply mb-5 border-0;
+header {
+    @apply mb-5 !border-b-0 !shadow-none;
 }
-.auth footer {
-    @apply mt-5 border-0;
+footer {
+    @apply mt-5 !border-t-0;
 }
-.auth .alert {
+.alert {
     @apply text-center;
 }
