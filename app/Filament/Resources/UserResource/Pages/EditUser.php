@@ -26,16 +26,6 @@ class EditUser extends EditRecord
         return $this->previousUrl ?? $this->getResource()::getUrl('index');
     }
 
-//    protected function mutateFormDataBeforeFill(array $data): array
-//    {
-//        if (!empty($this->record->email_verified_at) && \DateTime::createFromFormat('Y-m-d h:i:s', $this->record->email_verified_at) !== false)
-//        {
-//            $data['verfied'] = true;
-//        }
-//
-//        return $data;
-//    }
-
     protected function beforeSave(): void
     {
         if (!empty($this->record->avatar))

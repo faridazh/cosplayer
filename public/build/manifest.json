@@ -1,11 +1,11 @@
 {
   "resources/css/auth.css": {
-    "file": "assets/auth-1f57d160.css",
+    "file": "assets/auth-d56354ac.css",
     "src": "resources/css/auth.css",
     "isEntry": true
   },
   "resources/css/global.css": {
-    "file": "assets/global-627fb4e4.css",
+    "file": "assets/global-87b86702.css",
     "src": "resources/css/global.css",
     "isEntry": true
   },

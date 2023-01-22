@@ -5,6 +5,7 @@ namespace App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use Intervention\Image\Facades\Image;
 
 class CreateUser extends CreateRecord
 {
@@ -15,7 +16,7 @@ class CreateUser extends CreateRecord
         return $this->previousUrl ?? $this->getResource()::getUrl('index');
     }
 
-    protected function afterSave(): void
+    protected function afterCreate(): void
     {
         if (empty($this->record->email_verified_at) && $this->data['verified'] == true) {
             $this->record->verifyEmail();
