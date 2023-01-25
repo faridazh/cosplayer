@@ -20,3 +20,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', \App\Http\Controllers\Public\Home::class)->name('homepage');
+Route::get('/cosplay', \App\Http\Controllers\Public\Cosplay::class)->name('cosplay');
