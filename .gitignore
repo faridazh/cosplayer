@@ -36,6 +36,6 @@ public/css/global.css
 public/js/global.js
 
 # Vite Build
-public/build
-public/assets
-public/uploads
+public/assets/
+public/build/
+public/uploads/
