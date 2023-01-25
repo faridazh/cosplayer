@@ -17,4 +17,22 @@ class Cosplay extends Controller
             'posts' => CosplayModel::paginate(),
         ]);
     }
+
+    public function showWithSlug(CosplayModel $post, $slug)
+    {
+        if ($slug != $post->slug)
+        {
+            return redirect()->route('public.cosplay.show', [$post->id]);
+        }
+
+        return view('public.cosplay.show', [
+            'page_title' => $this->page_title,
+            'post' => $post,
+        ]);
+    }
+
+    public function show(CosplayModel $post)
+    {
+        return redirect()->route('public.cosplay.showWithSlugWithCosplayer', [$post->id, $post->slug, $post->cosplayer->slug]);
+    }
 }

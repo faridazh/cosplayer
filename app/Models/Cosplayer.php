@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cosplayer extends Model
@@ -32,8 +33,8 @@ class Cosplayer extends Model
         'shop' => 'json',
     ];
 
-    public function posts(): BelongsToMany
+    public function posts(): HasMany
     {
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class, 'cosplayer_id', 'id');
     }
 }

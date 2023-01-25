@@ -18,14 +18,14 @@ class Cosplayer extends Controller
         ]);
     }
 
-    public function showWithSLug(CosplayerModel $cosplayer, $slug)
+    public function showWithSlug(CosplayerModel $cosplayer, $slug)
     {
         if ($slug != $cosplayer->slug) {
             return redirect()->route('public.cosplayer.show', [$cosplayer->id]);
         }
 
         return view('public.cosplayer.show', [
-            'page_title' => $cosplayer->name . ' ' . $this->page_title,
+            'page_title' => $cosplayer->name,
             'cosplayer' => $cosplayer,
         ]);
     }
