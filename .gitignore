@@ -34,3 +34,8 @@ public/css/global.css
 
 # Asset Generated JS
 public/js/global.js
+
+# Vite Build
+public/build
+public/assets
+public/uploads

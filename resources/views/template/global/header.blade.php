@@ -13,8 +13,8 @@
             <div class="navbar-links">
                 <a href="{{ route('homepage') }}"><i class="fas fa-home fa-fw mr-1"></i>Home</a>
                 <a href="#"><i class="fas fa-calendar fa-fw mr-1"></i>Event</a>
-                <a href="#"><i class="fas fa-masks-theater fa-fw mr-1"></i>Cosplayer</a>
-                <a href="{{ route('cosplay') }}"><i class="fas fa-mask fa-fw mr-1"></i>Cosplay</a>
+                <a href="{{ route('public.cosplayer.index') }}"><i class="fas fa-masks-theater fa-fw mr-1"></i>Cosplayer</a>
+                <a href="{{ route('public.cosplay.index') }}"><i class="fas fa-mask fa-fw mr-1"></i>Cosplay</a>
                 <a href="#"><i class="fas fa-circle-xmark fa-fw mr-1"></i>Scammer</a>
                 <div x-data="{ dropdownOpen: false }">
                     <a href="#more" @click="dropdownOpen = ! dropdownOpen" @click.outside="dropdownOpen = false"><i class="fas fa-angle-down fa-fw mr-1"></i>More</a>
@@ -51,8 +51,8 @@
         <div class="space-y-1 px-2 pt-2 pb-3">
             <a href="{{ route('homepage') }}" class="bg-palette-5 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page"><i class="fas fa-home fa-fw mr-1"></i>Home</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-calendar fa-fw mr-1"></i>Event</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-masks-theater fa-fw mr-1"></i>Cosplayer</a>
-            <a href="{{ route('cosplay') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-mask fa-fw mr-1"></i>Cosplay</a>
+            <a href="{{ route('public.cosplayer.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-masks-theater fa-fw mr-1"></i>Cosplayer</a>
+            <a href="{{ route('public.cosplay.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-mask fa-fw mr-1"></i>Cosplay</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-circle-xmark fa-fw mr-1"></i>Scammer</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"><i class="fab fa-discord fa-fw mr-1"></i>Discord</a>
         </div>

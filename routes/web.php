@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Public\Cosplayer as CosplayerController;
+use App\Http\Controllers\Public\Cosplay as CosplayController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +23,15 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', \App\Http\Controllers\Public\Home::class)->name('homepage');
-Route::get('/cosplay', \App\Http\Controllers\Public\Cosplay::class)->name('cosplay');
+
+Route::name('public')->group(function () {
+    Route::controller(CosplayerController::class)->name('.cosplayer')->group(function () {
+        Route::get('/cosplayer', 'index')->name('.index');
+        Route::get('/cosplayer/{cosplayer:id}-{slug}', 'showWithSLug')->name('.showWithSLug');
+        Route::get('/cosplayer/{cosplayer:id}', 'show')->name('.show');
+    });
+
+    Route::controller(CosplayController::class)->name('.cosplay')->group(function () {
+        Route::get('/cosplay', 'index')->name('.index');
+    });
+});
