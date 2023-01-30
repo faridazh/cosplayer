@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CosplayerResource\Pages;
 use App\Filament\Resources\CosplayerResource\RelationManagers;
 use App\Models\Cosplayer;
-use Faker\Core\File;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -46,6 +45,17 @@ class CosplayerResource extends Resource
                             ->hintIcon('heroicon-o-exclamation')
                             ->hintColor('warning'),
                     ])->columns(1),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Select::make('user_id')
+                            ->label('User')
+                            ->nullable()
+                            ->rules(['nullable', 'numeric', 'exists:users,id'])
+                            ->searchable()
+                            ->relationship('user', 'username'),
+                        Forms\Components\MultiSelect::make('roles')
+                            ->relationship('roles', 'name')
+                    ])->columns(2),
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
@@ -100,10 +110,9 @@ class CosplayerResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('avatar')
-                    ->circular(),
-                Tables\Columns\TextColumn::make('name')
-                    ->sortable(),
+                Tables\Columns\ImageColumn::make('avatar')->circular(),
+                Tables\Columns\ImageColumn::make('cover'),
+                Tables\Columns\TextColumn::make('name')->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

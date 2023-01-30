@@ -17,9 +17,8 @@ use Illuminate\Support\Str;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-
+    protected static ?string $navigationLabel = 'Cosplay';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-
     protected static ?string $navigationGroup = 'Manage Cosplayer';
 
     public static function form(Form $form): Form
@@ -39,14 +38,12 @@ class PostResource extends Resource
                     ])->columns(1),
                 Forms\Components\Card::make()
                     ->schema([
-                        Forms\Components\TextInput::make('author')
-                            ->default(auth()->user()->username)
-                            ->dehydrated()
-                            ->disabled(),
-                        Forms\Components\Hidden::make('user_id')
+                        Forms\Components\BelongsToSelect::make('user_id')
+                            ->label('Author')
+                            ->nullable()
                             ->rules(['required', 'numeric', 'exists:users,id'])
-                            ->required()
-                            ->default(auth()->user()->id),
+                            ->searchable()
+                            ->relationship('author', 'username'),
                         Forms\Components\Select::make('cosplayer_id')
                             ->label('Cosplayer')
                             ->required()

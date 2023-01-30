@@ -14,7 +14,7 @@ class Cosplayer extends Controller
     {
         return view('public.cosplayer.index', [
             'page_title' => $this->page_title,
-            'cosplayers' => CosplayerModel::paginate(20),
+            'cosplayers' => CosplayerModel::latest()->paginate(20),
         ]);
     }
 
@@ -27,6 +27,7 @@ class Cosplayer extends Controller
         return view('public.cosplayer.show', [
             'page_title' => $cosplayer->name,
             'cosplayer' => $cosplayer,
+            'posts' => $cosplayer->posts()->latest()->paginate(20),
         ]);
     }
 

@@ -12,9 +12,9 @@
             </div>
             <div class="navbar-links">
                 <a href="{{ route('homepage') }}" @if(Route::is('homepage')) class="active" @endif><i class="fas fa-home fa-fw mr-1"></i>Home</a>
-                <a href="#"><i class="fas fa-calendar fa-fw mr-1"></i>Event</a>
                 <a href="{{ route('public.cosplayer.index') }}" @if(Route::is('public.cosplayer.*')) class="active" @endif><i class="fas fa-masks-theater fa-fw mr-1"></i>Cosplayer</a>
                 <a href="{{ route('public.cosplay.index') }}" @if(Route::is('public.cosplay.*')) class="active" @endif><i class="fas fa-mask fa-fw mr-1"></i>Cosplay</a>
+                <a href="#"><i class="fas fa-calendar fa-fw mr-1"></i>Event</a>
                 <a href="#"><i class="fas fa-circle-xmark fa-fw mr-1"></i>Scammer</a>
                 <div x-data="{ dropdownOpen: false }">
                     <a href="#more" @click="dropdownOpen = ! dropdownOpen" @click.outside="dropdownOpen = false"><i class="fas fa-angle-down fa-fw mr-1"></i>More</a>
@@ -50,11 +50,12 @@
     <div class="mobile-menu" x-show="menuOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
         <div class="menu-body">
             <a href="{{ route('homepage') }}" @if(Route::is('homepage')) class="active" @endif><i class="fas fa-home fa-fw mr-1"></i>Home</a>
-            <a href="#"><i class="fas fa-calendar fa-fw mr-1"></i>Event</a>
             <a href="{{ route('public.cosplayer.index') }}" @if(Route::is('public.cosplayer.*')) class="active" @endif><i class="fas fa-masks-theater fa-fw mr-1"></i>Cosplayer</a>
             <a href="{{ route('public.cosplay.index') }}" @if(Route::is('public.cosplay.*')) class="active" @endif><i class="fas fa-mask fa-fw mr-1"></i>Cosplay</a>
+            <a href="#"><i class="fas fa-calendar fa-fw mr-1"></i>Event</a>
             <a href="#"><i class="fas fa-circle-xmark fa-fw mr-1"></i>Scammer</a>
             <a href="#"><i class="fab fa-discord fa-fw mr-1"></i>Discord</a>
         </div>
     </div>
 </header>
+{{ Breadcrumbs::render() }}

@@ -2,7 +2,7 @@
 
 @section('main')
     <section>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div class="cosplayer-section">
             @foreach($cosplayers as $cosplayer)
                 <div class="cos-card">
                     <img class="thumb" src="{{ asset($cosplayer->cover) }}" loading="lazy"/>
@@ -18,14 +18,14 @@
                             <div class="overflow-hidden">
                                 <div class="text-xs text-gray-400">Latest Cosplay</div>
                                 <div class="text-sm font-semibold truncate">
-                                    <a href="{{ route('public.cosplay.showWithSlug', [$cosplayer->posts()->first()->id, $cosplayer->posts()->first()->slug]) }}">{{ $cosplayer->posts()->first()->title }}</a>
+                                    <a href="{{ route('public.cosplay.showWithSlug', [$cosplayer->posts()->latest()->first()->id, $cosplayer->posts()->latest()->first()->slug]) }}">{{ $cosplayer->posts()->latest()->first()->title }}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="stats">
                             <div class="count">
-                                <i class="fas fa-mask text-gray-900"></i>
-                                <p class="font-medium text-gray-900">{{ number_format($cosplayer->posts) }}</p>
+                                <i class="fas fa-mask text-indigo-400"></i>
+                                <p class="font-medium">{{ number_format($cosplayer->posts) }}</p>
                             </div>
                         </div>
                     </div>

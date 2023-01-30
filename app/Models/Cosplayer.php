@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 
 class Cosplayer extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasRoles;
 
     protected $fillable = [
         'user_id',
@@ -36,5 +37,10 @@ class Cosplayer extends Model
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'cosplayer_id', 'id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

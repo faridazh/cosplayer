@@ -48,7 +48,7 @@ class EditPost extends EditRecord
             $coverPath = public_path($this->record->cover);
             $coverImg= Image::make($coverPath);
 
-            $coverImg->resize(1000, 300)->save($coverPath);
+            $coverImg->resize(500, 250)->save($coverPath);
 
             $coverImg->destroy();
         }

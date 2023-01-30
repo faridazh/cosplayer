@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
@@ -41,11 +40,11 @@ class Post extends Model
 
     public function cosplayer(): BelongsTo
     {
-        return $this->belongsTo(Cosplayer::class);
+        return $this->belongsTo(Cosplayer::class, 'cosplayer_id', 'id');
     }
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

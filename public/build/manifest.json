@@ -5,12 +5,12 @@
     "isEntry": true
   },
   "resources/css/global.css": {
-    "file": "assets/global-87b86702.css",
+    "file": "assets/global-85efb725.css",
     "src": "resources/css/global.css",
     "isEntry": true
   },
   "resources/js/global.js": {
-    "file": "assets/global-113fdd3a.js",
+    "file": "assets/global-22da05bb.js",
     "src": "resources/js/global.js",
     "isEntry": true
   }

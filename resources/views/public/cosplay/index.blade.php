@@ -1,7 +1,7 @@
 @extends('template.global.page')
 
 @section('main')
-    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+    <section class="cosplay-section">
         @forelse($posts as $post)
             <div class="cos-card">
                 <img class="thumb" src="{{ asset($post->cover) }}" loading="lazy"/>
@@ -29,7 +29,7 @@
                     <div class="stats">
                         <div class="count">
                             <i class="far fa-heart text-red-400"></i>
-                            <p class="font-medium">{{ number_format(10) }}</p>
+                            <p class="font-medium">{{ number_format($post->likes) }}</p>
                         </div>
                     </div>
                 </div>

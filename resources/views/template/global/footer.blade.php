@@ -9,27 +9,30 @@
             <div class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
         </div>
         <div class="links">
-            <div class="title">Links</div>
+            <div class="title">Database</div>
             <div class="body">
                 <div>
-                    <a href="#">link</a>
+                    <a href="#">Cosplayers</a>
                 </div>
                 <div>
-                    <a href="#">link</a>
+                    <a href="#">Cosplays</a>
                 </div>
                 <div>
-                    <a href="#">link</a>
+                    <a href="#">Events</a>
+                </div>
+                <div>
+                    <a href="#">Scammer</a>
                 </div>
             </div>
         </div>
         <div class="links">
-            <div class="title">Links</div>
+            <div class="title">Website</div>
             <div class="body">
                 <div>
-                    <a href="#">link</a>
+                    <a href="#">About Us</a>
                 </div>
                 <div>
-                    <a href="#">link</a>
+                    <a href="#">Terms</a>
                 </div>
                 <div>
                     <a href="#">link</a>
@@ -41,6 +44,6 @@
         <div class="website">
             <a href="{{ route('homepage') }}">{{ config('app.name', 'Cosplayer.gg') }}</a> made by <i class="fa-solid fa-heart text-red-500"></i> and <i class="fa-solid fa-mug-hot"></i>
         </div>
-        <div class="developer">Developed by Azukiss</div>
+        <div class="developer">Developed by <a href="#">Azukiss</a></div>
     </div>
 </footer>
