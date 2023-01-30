@@ -25,12 +25,10 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 
-
 # macOS Files
 .DS_Store
 
-# Asset Generated CSS
-public/css/global.css
-
-# Asset Generated JS
-public/js/global.js
+# Vite Build
+/public/assets/
+/public/build/
+/public/uploads/

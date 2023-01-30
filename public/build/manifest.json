@@ -1,16 +1,16 @@
 {
   "resources/css/auth.css": {
-    "file": "assets/auth-1f57d160.css",
+    "file": "assets/auth-d56354ac.css",
     "src": "resources/css/auth.css",
     "isEntry": true
   },
   "resources/css/global.css": {
-    "file": "assets/global-627fb4e4.css",
+    "file": "assets/global-85efb725.css",
     "src": "resources/css/global.css",
     "isEntry": true
   },
   "resources/js/global.js": {
-    "file": "assets/global-113fdd3a.js",
+    "file": "assets/global-22da05bb.js",
     "src": "resources/js/global.js",
     "isEntry": true
   }

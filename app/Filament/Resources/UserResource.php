@@ -70,6 +70,12 @@ class UserResource extends Resource
 //                            ->nullable()
                     ])
                     ->columns(2),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\MultiSelect::make('roles')
+                            ->searchable()
+                            ->relationship('roles', 'name')
+                    ])->columns(1),
             ]);
     }
 

@@ -18,15 +18,30 @@
         @apply py-4 px-5;
         @apply flex items-center justify-between;
     }
+    .header .active {
+        @apply !text-primary;
+    }
     .header .mobile-menu-btn {
-        @apply sm:hidden;
+        @apply md:hidden;
+    }
+    .header .mobile-menu {
+        @apply md:hidden absolute w-full z-10 bg-white border-t rounded-b-md shadow-lg;
+    }
+    .mobile-menu .menu-body {
+        @apply space-y-1 px-2 pt-2 pb-3;
+    }
+    .mobile-menu .menu-body a {
+        @apply block px-3 py-2 rounded-md font-medium;
+    }
+    .mobile-menu .menu-body a.active {
+        @apply bg-palette-5;
     }
 
     .navbar {
         @apply flex items-center;
     }
     .navbar .navbar-links {
-        @apply hidden sm:flex items-center ml-10 space-x-5 text-gray-900;
+        @apply hidden md:flex items-center ml-10 space-x-5 text-gray-900;
     }
     .navbar .navbar-links a, .dropdown a {
         @apply text-sm text-gray-700 hover:text-primary active:text-primary;
@@ -77,10 +92,20 @@
         @apply max-w-screen-xl mx-auto;
         @apply px-5;
     }
+    .breadcrumbs {
+        @apply bg-gray-50;
+    }
+    .breadcrumbs .body {
+        @apply max-w-screen-xl mx-auto;
+        @apply px-5;
+    }
+    .breadcrumbs ol {
+        @apply py-3 flex flex-wrap text-xs md:text-sm font-medium;
+    }
 }
 
 @layer components {
-    a:not(.btn, .navbar-links a, .dropdown a, .website a) {
+    a:not(.btn, .navbar-links a, .dropdown a, .credits a) {
         @apply text-primary hover:text-palette-3 active:text-palette-3;
     }
     a:not(.btn) {
@@ -174,5 +199,60 @@
     }
     .alert-secondary {
         @apply border-gray-300 bg-gray-200 text-gray-700;
+    }
+    .cos-card {
+        @apply flex flex-col w-full h-full max-w-lg mx-auto bg-white rounded-lg border shadow hover:border-palette-4 hover:shadow-palette-3;
+    }
+    .cos-card .thumb {
+        @apply w-full h-full rounded-lg rounded-b-none object-cover;
+    }
+    .cos-card .tags {
+        @apply flex items-center -mt-3 px-4;
+    }
+    .cos-card .tag {
+        @apply inline-block ring bg-primary ring-palette-3 rounded-full text-xs text-white px-3 py-0.5;
+    }
+    .cos-card .title {
+        @apply mt-2 py-2 px-4;
+    }
+    .cos-card .title a {
+        @apply text-lg font-medium leading-6;
+    }
+    .cos-card .information {
+        @apply flex flex-row items-center h-full w-full px-4 mt-4 space-x-1;
+        @apply border-t w-full py-4;
+    }
+    .cos-card .information .cosplayer, .cos-card .information .cosplay {
+        @apply flex items-center space-x-3 w-full;
+    }
+    .cos-card .information .cosplayer img {
+        @apply object-cover w-8 h-8 ring ring-gray-200 hover:ring-palette-3 rounded-full;
+    }
+    .cos-card .information .stats {
+        @apply flex items-center flex-shrink-0 px-2;
+    }
+    .cos-card .information .stats .count {
+        @apply flex items-center space-x-2 text-gray-400 text-sm;
+    }
+    .sidebar-card .title {
+        @apply mb-2 font-semibold uppercase tracking-wide;
+    }
+    .sidebar-card .body {
+        @apply bg-white shadow mx-auto p-5 rounded-md border border-gray-300;
+    }
+    .homepage-section {
+        @apply grid grid-cols-1 md:grid-cols-4 gap-5;
+    }
+    .main-side {
+        @apply col-span-1 md:col-span-3;
+    }
+    .side-relative {
+        @apply col-span-1 relative;
+    }
+    .side-fixed {
+        @apply col-span-1;
+    }
+    .cosplayer-section, .cosplay-section {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5;
     }
 }
