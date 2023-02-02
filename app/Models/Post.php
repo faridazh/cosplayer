@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Tags\HasTags;
 
 class Post extends Model
 {
-    use SoftDeletes, HasTags;
+    use SoftDeletes;
 
     protected $fillable = [
         'user_id',
@@ -23,6 +24,7 @@ class Post extends Model
         'is_approved',
         'social',
         'shop',
+        'tags',
     ];
 
     protected $casts = [
@@ -35,8 +37,9 @@ class Post extends Model
         'is_nsfw' => 'boolean',
         'is_hidden' => 'boolean',
         'is_approved' => 'boolean',
-        'social' => 'json',
-        'shop' => 'json',
+        'social' => 'array',
+        'shop' => 'array',
+        'tags' => 'array',
     ];
 
     public function cosplayer(): BelongsTo
@@ -47,5 +50,10 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, Post::class, 'tags', 'id');
     }
 }

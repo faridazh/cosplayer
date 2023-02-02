@@ -40,10 +40,9 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('user_id')
                             ->label('Author')
-                            ->nullable()
-                            ->rules(['required', 'numeric', 'exists:users,id'])
+                            ->required()
                             ->searchable()
-                            ->default(auth()->user())
+                            ->default(auth()->user()->id)
                             ->relationship('author', 'username'),
                         Forms\Components\Select::make('cosplayer_id')
                             ->label('Cosplayer')
@@ -62,6 +61,14 @@ class PostResource extends Resource
                         Forms\Components\MarkdownEditor::make('description')
                             ->rules(['nullable', 'max:5000'])
                             ->columnSpan(2),
+                    ])->columns(2),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\MultiSelect::make('tags')
+                            ->label('Tags')
+                            ->searchable()
+                            ->relationship('tags', 'name')
+                            ->columnSpanFull(),
                         Forms\Components\Toggle::make('is_nsfw')
                             ->label('Content NSFW')
                             ->default(true),
@@ -71,7 +78,7 @@ class PostResource extends Resource
                         Forms\Components\Toggle::make('is_approved')
                             ->label('Post Approved')
                             ->default(true),
-                    ])->columns(2),
+                    ])->columns(3),
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\Section::make('Social Media')

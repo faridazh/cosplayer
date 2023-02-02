@@ -30,8 +30,8 @@ class Cosplayer extends Model
         'name' => 'string',
         'slug' => 'string',
         'description' => 'string',
-        'social' => 'json',
-        'shop' => 'json',
+        'social' => 'array',
+        'shop' => 'array',
     ];
 
     public function posts(): HasMany

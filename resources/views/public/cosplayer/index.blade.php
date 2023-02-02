@@ -16,9 +16,13 @@
                     <div class="information">
                         <div class="cosplay">
                             <div class="overflow-hidden">
-                                <div class="text-xs text-gray-400">Latest Cosplay</div>
+                                <div class="text-xs font-medium text-gray-400">Latest Cosplay</div>
                                 <div class="text-sm font-semibold truncate">
-                                    <a href="{{ route('public.cosplay.showWithSlug', [$cosplayer->posts()->latest()->first()->id, $cosplayer->posts()->latest()->first()->slug]) }}">{{ $cosplayer->posts()->latest()->first()->title }}</a>
+                                    @if(!empty($cosplayer->posts()->latest()->first()->id))
+                                        <a href="{{ route('public.cosplay.showWithSlug', [$cosplayer->posts()->latest()->first()->id, $cosplayer->posts()->latest()->first()->slug]) }}">{{ $cosplayer->posts()->latest()->first()->title }}</a>
+                                    @else
+                                        <div class="text-gray-300">Not Yet</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

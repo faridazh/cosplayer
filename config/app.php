@@ -195,8 +195,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         // SweetAlert
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        // Spatie Tags
-        Spatie\Tags\TagsServiceProvider::class,
 
         /*
          * Application Service Providers...
