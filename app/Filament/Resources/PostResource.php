@@ -43,6 +43,7 @@ class PostResource extends Resource
                             ->nullable()
                             ->rules(['required', 'numeric', 'exists:users,id'])
                             ->searchable()
+                            ->default(auth()->user())
                             ->relationship('author', 'username'),
                         Forms\Components\Select::make('cosplayer_id')
                             ->label('Cosplayer')
