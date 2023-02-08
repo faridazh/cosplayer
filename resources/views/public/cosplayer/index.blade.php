@@ -12,7 +12,9 @@
                     <div class="title">
                         <a href="{{ route('public.cosplayer.showWithSlug', [$cosplayer->id, $cosplayer->slug]) }}">{{ $cosplayer->name }}</a>
                     </div>
-                    <div class="body"></div>
+                    @if(!empty($cosplayer->description))
+                        <div class="body">{{ $cosplayer->description }}</div>
+                    @endif
                     <div class="information">
                         <div class="cosplay">
                             <div class="overflow-hidden">
@@ -21,7 +23,7 @@
                                     @if(!empty($cosplayer->posts()->latest()->first()->id))
                                         <a href="{{ route('public.cosplay.showWithSlug', [$cosplayer->posts()->latest()->first()->id, $cosplayer->posts()->latest()->first()->slug]) }}">{{ $cosplayer->posts()->latest()->first()->title }}</a>
                                     @else
-                                        <div class="text-gray-300">Not Yet</div>
+                                        <div class="text-gray-300">Nothing</div>
                                     @endif
                                 </div>
                             </div>

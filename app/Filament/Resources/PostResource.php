@@ -64,11 +64,10 @@ class PostResource extends Resource
                     ])->columns(2),
                 Forms\Components\Card::make()
                     ->schema([
-                        Forms\Components\MultiSelect::make('tags')
-                            ->label('Tags')
-                            ->searchable()
-                            ->relationship('tags', 'name')
-                            ->columnSpanFull(),
+                        Forms\Components\TagsInput::make('tags')
+                            ->columnSpanFull()
+                            ->nullable()
+                            ->rules(['nullable','array','max:3']),
                         Forms\Components\Toggle::make('is_nsfw')
                             ->label('Content NSFW')
                             ->default(true),
@@ -122,7 +121,11 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('cover'),
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')->sortable(),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TagsColumn::make('tags'),
+                Tables\Columns\TextColumn::make('likes'),
+                Tables\Columns\TextColumn::make('dislikes'),
                 Tables\Columns\IconColumn::make('is_nsfw')
                     ->label('NSFW')
                     ->boolean()

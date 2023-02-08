@@ -111,8 +111,10 @@ class CosplayerResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar')->circular(),
-                Tables\Columns\ImageColumn::make('cover'),
-                Tables\Columns\TextColumn::make('name')->sortable(),
+//                Tables\Columns\ImageColumn::make('cover'),
+                Tables\Columns\TextColumn::make('name')->label('Cosplayer Name')->sortable(),
+                Tables\Columns\TextColumn::make('stars'),
+                Tables\Columns\TextColumn::make('posts')->label('Cosplay'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),

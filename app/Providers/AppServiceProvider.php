@@ -35,6 +35,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Filament::serving(function () {
+            Filament::registerScripts([
+                (new \Illuminate\Foundation\Vite())(['resources/js/filament/app.js']),
+            ]);
+            Filament::registerStyles([
+                (new \Illuminate\Foundation\Vite())(['resources/css/filament/app.css']),
+            ]);
             Filament::registerNavigationGroups([
                 NavigationGroup::make()->label('Accounts'),
                 NavigationGroup::make()->label('Logs')->collapsed(),

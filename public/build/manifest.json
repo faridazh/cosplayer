@@ -1,17 +1,17 @@
 {
   "resources/css/auth.css": {
     "file": "assets/auth-d56354ac.css",
-    "src": "resources/css/auth.css",
-    "isEntry": true
+    "isEntry": true,
+    "src": "resources/css/auth.css"
   },
   "resources/css/global.css": {
-    "file": "assets/global-85efb725.css",
-    "src": "resources/css/global.css",
-    "isEntry": true
+    "file": "assets/global-c8d7bfc8.css",
+    "isEntry": true,
+    "src": "resources/css/global.css"
   },
   "resources/js/global.js": {
-    "file": "assets/global-22da05bb.js",
-    "src": "resources/js/global.js",
-    "isEntry": true
+    "file": "assets/global-1736b1f2.js",
+    "isEntry": true,
+    "src": "resources/js/global.js"
   }
 }
