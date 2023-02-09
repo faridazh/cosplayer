@@ -12,19 +12,34 @@
                     </div>
                 </div>
                 <div class="col-span-1 md:col-span-2">
-                    <article class="prose prose-neutral">
-                        <div>
-                            <div class="font-semibold text-xl">{{ $post->cosplayer->name }} - {{ $post->title }}</div>
-                            <div class="text-sm text-gray-500">Posted by {{ $post->author->username }} &bull; {{ \Carbon\Carbon::parse($post->created_at)->locale(config('app.locale'))->diffForHumans() }}</div>
-                        </div>
-                        {!! Str::markdown($post->description) !!}
+                    <div>
+                        <div class="font-semibold text-xl">{{ $post->cosplayer->name }} - {{ $post->title }}</div>
+                        <div class="text-xs text-gray-500">Posted by {{ $post->author->username }} &bull; {{ \Carbon\Carbon::parse($post->created_at)->locale(config('app.locale'))->diffForHumans() }}</div>
+                    </div>
+                    <article class="prose prose-neutral my-5 min-h-[200px] text-sm">
+                        <div class="font-medium">Description</div>
+                        @if(!empty($post->description))
+                            {!! Str::markdown($post->description) !!}
+                        @endif
                     </article>
+                    @auth
+                        @livewire('public.cosplay.show.likes', ['post' => $post])
+                    @else
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <div class="text-primary"><i class="far fa-thumbs-up"></i></div>
+                                <div class="text-sm">{{ number_format($post->likes) }} Likes</div>
+                            </div>
+                        </div>
+                    @endauth
                     <div class="border-t my-5"></div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <img class="w-12 h-12 rounded-full border" src="{{ asset($post->cosplayer->avatar) }}" loading="lazy">
                             <div class="space-y-1.5">
-                                <div class="font-semibold">{{ $post->cosplayer->name }}</div>
+                                <div class="font-semibold">
+                                    <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">{{ $post->cosplayer->name }}</a>
+                                </div>
                                 @if(!empty($post->cosplayer->getRoleNames()->first()))
                                     @foreach($post->cosplayer->getRoleNames() as $role)
                                         <div class="inline-flex items-center py-0.5 px-2 border border-primary text-primary rounded text-xs capitalize">{{ $role }}</div>

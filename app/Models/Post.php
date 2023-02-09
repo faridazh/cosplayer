@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
@@ -48,5 +49,21 @@ class Post extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function liked()
+    {
+        return PostLike::where('user_id', auth()->user()->id)->where('post_id', $this->id)->first();
+    }
+
+    public function totalLikes(): HasMany
+    {
+        return $this->hasMany(PostLike::class, 'post_id', 'id');
+    }
+
+    public function countLikes()
+    {
+        $this->attributes['likes'] = $this->totalLikes()->count();
+        $this->save();
     }
 }

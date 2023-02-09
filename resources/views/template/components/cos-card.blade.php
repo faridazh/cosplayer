@@ -3,13 +3,14 @@
     <div class="title">
         <a href="{{ route('public.cosplay.showWithSlug', [$post->id, $post->slug]) }}">{{ $post->title }}</a>
     </div>
-    @if(!empty($post->tags) && isset($post->tags))
-        <div class="tags">
-            @foreach(array_slice($post->tags, 0, 5) as $tag)
-                <span class="tag"><a href="#">#{{ $tag }}</a></span>
-            @endforeach
+    <div class="body">
+        <div class="tags overflow-hidden">
+            @forelse(array_slice($post->tags, 0, 5) as $tag)
+                <span class="tag whitespace-nowrap"><a href="#">#{{ $tag }}</a></span>
+            @empty
+            @endforelse
         </div>
-    @endif
+    </div>
     <div class="information">
         <div class="cosplayer">
             <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">
@@ -24,7 +25,7 @@
         </div>
         <div class="stats">
             <div class="count">
-                <i class="far fa-heart text-red-400"></i>
+                <i class="far fa-thumbs-up text-primary"></i>
                 <p class="font-medium">{{ number_format($post->likes) }}</p>
             </div>
         </div>

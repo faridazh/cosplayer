@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Models\Cosplayer;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\File;
@@ -15,15 +16,21 @@ class EditPost extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
-            Actions\ForceDeleteAction::make(),
-            Actions\RestoreAction::make(),
+            Actions\DeleteAction::make()->after(function ($record) {
+                Cosplayer::find($record->cosplayer_id)->countPosts();
+            }),
+            Actions\RestoreAction::make()->after(function ($record) {
+                Cosplayer::find($record->cosplayer_id)->countPosts();
+            }),
+            Actions\ForceDeleteAction::make()->after(function ($record) {
+                if (!empty($record->cover))
+                {
+                    $coverPath = public_path($record->cover);
+                    File::delete($coverPath);
+                }
+                Cosplayer::find($record->cosplayer_id)->countPosts();
+            }),
         ];
-    }
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->previousUrl ?? $this->getResource()::getUrl('index');
     }
 
     protected function beforeSave(): void

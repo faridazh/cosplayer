@@ -10,10 +10,9 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->bigInteger('cosplayer_id')->unsigned()->after('user_id');
-            $table->foreign('cosplayer_id')->references('id')->on('cosplayers')->onDelete('cascade');
+            $table->foreign('cosplayer_id')->references('id')->on('cosplayers')->onUpdate('cascade')->onDelete('cascade');
 
             $table->bigInteger('likes')->unsigned()->default(0)->after('shop');
-            $table->bigInteger('dislikes')->unsigned()->default(0)->after('likes');
         });
     }
 
@@ -23,7 +22,6 @@ return new class extends Migration
             $table->dropForeign(['cosplayer_id']);
             $table->dropColumn('cosplayer_id');
             $table->dropColumn('likes');
-            $table->dropColumn('dislikes');
         });
     }
 };

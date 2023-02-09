@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
 
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('avatar')->nullable();
             $table->string('cover')->nullable();

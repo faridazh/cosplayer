@@ -213,11 +213,12 @@
         @apply text-lg font-medium leading-6;
     }
     .cos-card .body {
-        @apply mt-2 py-2 px-4;
+        @apply mt-2 py-2 px-4 space-y-2 h-full;
+    }
+    .cos-card .desc {
         @apply text-sm;
     }
     .cos-card .tags {
-        @apply mt-2 py-2 px-4;
         @apply flex items-center justify-center space-x-2;
         @apply text-gray-500;
     }
@@ -232,16 +233,19 @@
         @apply border-t w-full py-4;
     }
     .cos-card .information .cosplayer, .cos-card .information .cosplay {
-        @apply flex items-center space-x-3 w-full;
+        @apply flex items-center space-x-3 truncate flex-grow-0 w-full;
     }
     .cos-card .information .cosplayer img {
         @apply object-cover w-8 h-8 ring ring-gray-200 hover:ring-palette-3 rounded-full;
     }
     .cos-card .information .stats {
-        @apply flex items-center flex-shrink-0 px-2;
+        @apply flex flex-col items-center flex-shrink-0 px-2;
     }
     .cos-card .information .stats .count {
-        @apply flex items-center space-x-2 text-gray-400 text-sm;
+        @apply flex items-center text-gray-500 text-sm;
+    }
+    .cos-card .information .stats .count i {
+        @apply ml-2;
     }
     .sidebar-card .title {
         @apply mb-2 font-semibold uppercase tracking-wide;

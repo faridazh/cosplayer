@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Models\Cosplayer;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Intervention\Image\Facades\Image;
@@ -27,5 +28,7 @@ class CreatePost extends CreateRecord
 
             $coverImg->destroy();
         }
+
+        Cosplayer::find($this->record->cosplayer_id)->countPosts();
     }
 }
