@@ -6,6 +6,7 @@
     <title>{{ (!empty($page_title) ? $page_title . ' - ' : null) . config('app.name', 'Cosplayer.gg') }}</title>
 
     @vite('resources/css/global.css')
+    @livewireStyles
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/v4-font-face.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/v4-shims.min.css') }}">

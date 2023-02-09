@@ -15,7 +15,7 @@
                     <article class="prose prose-neutral">
                         <div>
                             <div class="font-semibold text-xl">{{ $post->cosplayer->name }} - {{ $post->title }}</div>
-                            <div>Rating: <i class="fas fa-star fa-fw text-yellow-400"></i>5</div>
+                            <div class="text-sm text-gray-500">Posted by {{ $post->author->username }} &bull; {{ \Carbon\Carbon::parse($post->created_at)->locale(config('app.locale'))->diffForHumans() }}</div>
                         </div>
                         {!! Str::markdown($post->description) !!}
                     </article>

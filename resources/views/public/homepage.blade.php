@@ -1,7 +1,7 @@
 @extends('template.global.page')
 
 @section('main')
-    <section class="homepage-section">
+    <section class="page-section">
         <div class="main-side">
 
         </div>

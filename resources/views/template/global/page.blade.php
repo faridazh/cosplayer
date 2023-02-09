@@ -16,6 +16,7 @@
             @csrf
         </form>
     @endauth
+    @livewireScripts
     @include('sweetalert::alert')
     @include('template.global.footer')
 </body>
