@@ -17,7 +17,7 @@ class CountRoles implements ShouldQueue
 
     public function __invoke()
     {
-        $stats = WebStatistic::where('attribute', 'roles')->first();
+        $stats = new WebStatistic();
         $stats->saveCount('roles', Role::count());
     }
 }
