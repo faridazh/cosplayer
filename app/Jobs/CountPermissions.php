@@ -17,7 +17,7 @@ class CountPermissions implements ShouldQueue
 
     public function __invoke()
     {
-        $stats = WebStatistic::where('attribute', 'permissions')->first();
+        $stats = new WebStatistic();
         $stats->saveCount('permissions', Permission::count());
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Console;
 
+use App\Jobs\CountCosplayers;
 use App\Jobs\CountPermissions;
+use App\Jobs\CountPosts;
 use App\Jobs\CountRoles;
 use App\Jobs\CountUsers;
 use Illuminate\Console\Scheduling\Schedule;
@@ -15,13 +17,15 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         // Web Stats Counter
-        $schedule->job(CountUsers::dispatch())->daily();
-        $schedule->job(CountRoles::dispatch())->daily();
-        $schedule->job(CountPermissions::dispatch())->daily();
+        $schedule->job(CountUsers::class)->everyMinute();
+        $schedule->job(CountRoles::class)->everyMinute();
+        $schedule->job(CountPermissions::class)->everyMinute();
+        $schedule->job(CountPosts::class)->everyMinute();
+        $schedule->job(CountCosplayers::class)->everyMinute();
         // Activity Logs
-        $schedule->command('activitylog:clean')->daily();
+        $schedule->command('activitylog:clean')->monthly();
         // Spatie Health
-        $schedule->command(RunHealthChecksCommand::class)->everyMinute();
+        $schedule->command(RunHealthChecksCommand::class)->everyFiveMinutes();
     }
 
     protected function commands()

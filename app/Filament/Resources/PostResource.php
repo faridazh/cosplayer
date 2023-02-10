@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Models\Cosplayer;
 use App\Models\Post;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -11,7 +12,9 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class PostResource extends Resource
@@ -40,9 +43,9 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\BelongsToSelect::make('user_id')
                             ->label('Author')
-                            ->nullable()
-                            ->rules(['required', 'numeric', 'exists:users,id'])
+                            ->required()
                             ->searchable()
+                            ->default(auth()->user()->id)
                             ->relationship('author', 'username'),
                         Forms\Components\Select::make('cosplayer_id')
                             ->label('Cosplayer')
@@ -61,6 +64,13 @@ class PostResource extends Resource
                         Forms\Components\MarkdownEditor::make('description')
                             ->rules(['nullable', 'max:5000'])
                             ->columnSpan(2),
+                    ])->columns(2),
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\TagsInput::make('tags')
+                            ->columnSpanFull()
+                            ->nullable()
+                            ->rules(['nullable','array','max:3']),
                         Forms\Components\Toggle::make('is_nsfw')
                             ->label('Content NSFW')
                             ->default(true),
@@ -70,7 +80,7 @@ class PostResource extends Resource
                         Forms\Components\Toggle::make('is_approved')
                             ->label('Post Approved')
                             ->default(true),
-                    ])->columns(2),
+                    ])->columns(3),
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\Section::make('Social Media')
@@ -114,7 +124,10 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('cover'),
-                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('title')->sortable(),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TagsColumn::make('tags'),
+                Tables\Columns\TextColumn::make('likes'),
                 Tables\Columns\IconColumn::make('is_nsfw')
                     ->label('NSFW')
                     ->boolean()
@@ -134,15 +147,43 @@ class PostResource extends Resource
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\ForceDeleteAction::make(),
-                    Tables\Actions\RestoreAction::make(),
+                    Tables\Actions\DeleteAction::make()->after(function ($record) {
+                        Cosplayer::find($record->cosplayer_id)->countPosts();
+                    }),
+                    Tables\Actions\RestoreAction::make()->after(function ($record) {
+                        Cosplayer::find($record->cosplayer_id)->countPosts();
+                    }),
+                    Tables\Actions\ForceDeleteAction::make()->after(function ($record) {
+                        if (!empty($record->cover))
+                        {
+                            $coverPath = public_path($record->cover);
+                            File::delete($coverPath);
+                        }
+                        Cosplayer::find($record->cosplayer_id)->countPosts();
+                    }),
                 ]),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-                Tables\Actions\ForceDeleteBulkAction::make(),
-                Tables\Actions\RestoreBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make()->after(function (Collection $records) {
+                    foreach ($records as $record) {
+                        Cosplayer::find($record->cosplayer_id)->countPosts();
+                    }
+                }),
+                Tables\Actions\RestoreBulkAction::make()->after(function (Collection $records) {
+                    foreach ($records as $record) {
+                        Cosplayer::find($record->cosplayer_id)->countPosts();
+                    }
+                }),
+                Tables\Actions\ForceDeleteBulkAction::make()->after(function (Collection $records) {
+                    foreach ($records as $record) {
+                        if (!empty($record->cover))
+                        {
+                            $coverPath = public_path($record->cover);
+                            File::delete($coverPath);
+                        }
+                        Cosplayer::find($record->cosplayer_id)->countPosts();
+                    }
+                }),
             ]);
     }
 

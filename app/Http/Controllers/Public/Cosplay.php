@@ -14,7 +14,6 @@ class Cosplay extends Controller
     {
         return view('public.cosplay.index', [
             'page_title' => $this->page_title,
-            'posts' => CosplayModel::orderBy('created_at', 'desc')->paginate(),
         ]);
     }
 

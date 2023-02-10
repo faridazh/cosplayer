@@ -35,7 +35,7 @@
                     <a href="#">Profile</a>
                     <a href="#">Settings</a>
                     @can('access-filament')
-                        <a href="{{ config('filament.path') }}">Admin Panel</a>
+                        <a href="{{ config('app.url').'/'.config('filament.path') }}">Admin Panel</a>
                     @endcan
                     <a href="#logout" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
                 </div>

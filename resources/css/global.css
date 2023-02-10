@@ -105,7 +105,7 @@
 }
 
 @layer components {
-    a:not(.btn, .navbar-links a, .dropdown a, .credits a) {
+    a:not(.btn, .navbar-links a, .dropdown a, .credits a, .tag a) {
         @apply text-primary hover:text-palette-3 active:text-palette-3;
     }
     a:not(.btn) {
@@ -206,33 +206,46 @@
     .cos-card .thumb {
         @apply w-full h-full rounded-lg rounded-b-none object-cover;
     }
-    .cos-card .tags {
-        @apply flex items-center -mt-3 px-4;
-    }
-    .cos-card .tag {
-        @apply inline-block ring bg-primary ring-palette-3 rounded-full text-xs text-white px-3 py-0.5;
-    }
     .cos-card .title {
         @apply mt-2 py-2 px-4;
     }
     .cos-card .title a {
         @apply text-lg font-medium leading-6;
     }
+    .cos-card .body {
+        @apply mt-2 py-2 px-4 space-y-2 h-full;
+    }
+    .cos-card .desc {
+        @apply text-sm;
+    }
+    .cos-card .tags {
+        @apply flex items-center justify-center space-x-2;
+        @apply text-gray-500;
+    }
+    .cos-card .tag {
+        @apply text-xs;
+    }
+    .cos-card .tag a {
+        @apply hover:text-primary active:text-palette-3;
+    }
     .cos-card .information {
-        @apply flex flex-row items-center h-full w-full px-4 mt-4 space-x-1;
+        @apply flex flex-row items-center h-full w-full px-4 mt-2 space-x-1;
         @apply border-t w-full py-4;
     }
     .cos-card .information .cosplayer, .cos-card .information .cosplay {
-        @apply flex items-center space-x-3 w-full;
+        @apply flex items-center space-x-3 truncate flex-grow-0 w-full;
     }
     .cos-card .information .cosplayer img {
         @apply object-cover w-8 h-8 ring ring-gray-200 hover:ring-palette-3 rounded-full;
     }
     .cos-card .information .stats {
-        @apply flex items-center flex-shrink-0 px-2;
+        @apply flex flex-col items-center flex-shrink-0 px-2;
     }
     .cos-card .information .stats .count {
-        @apply flex items-center space-x-2 text-gray-400 text-sm;
+        @apply flex items-center text-gray-500 text-sm;
+    }
+    .cos-card .information .stats .count i {
+        @apply ml-2;
     }
     .sidebar-card .title {
         @apply mb-2 font-semibold uppercase tracking-wide;
@@ -240,7 +253,7 @@
     .sidebar-card .body {
         @apply bg-white shadow mx-auto p-5 rounded-md border border-gray-300;
     }
-    .homepage-section {
+    .page-section {
         @apply grid grid-cols-1 md:grid-cols-4 gap-5;
     }
     .main-side {
@@ -253,6 +266,6 @@
         @apply col-span-1;
     }
     .cosplayer-section, .cosplay-section {
-        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5;
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5;
     }
 }

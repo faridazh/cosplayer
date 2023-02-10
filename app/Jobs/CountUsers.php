@@ -17,7 +17,7 @@ class CountUsers implements ShouldQueue
 
     public function __invoke()
     {
-        $stats = WebStatistic::where('attribute', 'users')->first();
+        $stats = new WebStatistic();
         $stats->saveCount('users', User::count());
     }
 }
