@@ -28,7 +28,6 @@ class CreatePost extends CreateRecord
 
             $coverImg->destroy();
         }
-
         Cosplayer::find($this->record->cosplayer_id)->countPosts();
     }
 }

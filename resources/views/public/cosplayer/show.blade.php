@@ -47,7 +47,6 @@
         </div>
     </section>
     <section class="mt-16">
-{{--        <div class="font-semibold text-2xl tracking-wide mb-3 uppercase">Cosplay</div>--}}
         <div class="cosplay-section">
             @foreach($posts as $post)
                 @include('template.components.cos-card')

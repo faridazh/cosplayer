@@ -43,7 +43,7 @@ class Cosplayer extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
+    
     public function totalPosts(): HasMany
     {
         return $this->hasMany(Post::class, 'cosplayer_id', 'id');

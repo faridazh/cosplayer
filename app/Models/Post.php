@@ -50,7 +50,7 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
+    
     public function liked()
     {
         return PostLike::where('user_id', auth()->user()->id)->where('post_id', $this->id)->first();
