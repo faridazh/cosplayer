@@ -137,6 +137,10 @@
       <excludeFolder url="file://$MODULE_DIR$/storage/app/public/assets" />
       <excludeFolder url="file://$MODULE_DIR$/storage/app/public/livewire-tmp" />
       <excludeFolder url="file://$MODULE_DIR$/storage/app/public/uploads" />
+      <excludeFolder url="file://$MODULE_DIR$/public/build/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/24" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/39" />
+      <excludeFolder url="file://$MODULE_DIR$/storage/framework/cache/data/85" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
