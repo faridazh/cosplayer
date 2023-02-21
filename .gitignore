@@ -27,9 +27,10 @@ Homestead.json
 
 # Vite Build
 public/build
+public/build/manifest.json
 
 public/assets
 public/uploads
-public/build/manifest.json
+
 storage/app/public/assets/fontawesome/css/.DS_Store
 storage/app/public/assets/image/.DS_Store
