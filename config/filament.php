@@ -12,6 +12,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 return [
 
@@ -87,7 +88,8 @@ return [
     'auth' => [
         'guard' => env('FILAMENT_AUTH_GUARD', 'web'),
         'pages' => [
-            'login' => \Filament\Http\Livewire\Auth\Login::class,
+//            'login' => \Filament\Http\Livewire\Auth\Login::class,
+            'login' => [AuthenticatedSessionController::class, 'create'],
         ],
     ],
 

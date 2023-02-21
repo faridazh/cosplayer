@@ -29,17 +29,17 @@ class PermissionResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->dehydrated(false)
+                            ->dehydrated()
                             ->disabled(),
                         Forms\Components\TextInput::make('guard_name')
-                            ->dehydrated(false)
+                            ->dehydrated()
                             ->disabled(),
-                    ])->columns(2),
+                    ]),
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\MultiSelect::make('roles')
                             ->relationship('roles', 'name'),
-                    ])->columns(1),
+                    ]),
             ]);
     }
 
@@ -51,21 +51,10 @@ class PermissionResource extends Resource
                 Tables\Columns\BadgeColumn::make('guard_name')->sortable()->searchable(),
                 Tables\Columns\TagsColumn::make('roles.name'),
             ])
-            ->filters([
-                Tables\Filters\TrashedFilter::make(),
-            ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
-                    Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\ForceDeleteAction::make(),
-                    Tables\Actions\RestoreAction::make(),
                 ]),
-            ])
-            ->bulkActions([
-//                Tables\Actions\DeleteBulkAction::make(),
-//                Tables\Actions\ForceDeleteBulkAction::make(),
-//                Tables\Actions\RestoreBulkAction::make(),
             ]);
     }
 
@@ -80,7 +69,7 @@ class PermissionResource extends Resource
     {
         return [
             'index' => Pages\ListPermissions::route('/'),
-            'create' => Pages\CreatePermission::route('/create'),
+//            'create' => Pages\CreatePermission::route('/create'),
             'edit' => Pages\EditPermission::route('/{record}/edit'),
         ];
     }
@@ -99,4 +88,8 @@ class PermissionResource extends Resource
             Widgets\StatsOverview::class,
         ];
     }
+
+    public static function canCreate(): bool { return false; }
+    public static function canDeleteAny(): bool { return false; }
+    public static function canForceDeleteAny(): bool { return false; }
 }

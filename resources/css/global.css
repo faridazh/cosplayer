@@ -245,7 +245,7 @@
         @apply flex items-center text-gray-500 text-sm;
     }
     .cos-card .information .stats .count i {
-        @apply ml-2;
+        @apply mr-1;
     }
     .sidebar-card .title {
         @apply mb-2 font-semibold uppercase tracking-wide;

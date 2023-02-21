@@ -47,11 +47,6 @@
         </div>
     </section>
     <section class="mt-16">
-        <div class="cosplay-section">
-            @foreach($posts as $post)
-                @include('template.components.cos-card')
-            @endforeach
-        </div>
+        @livewire('public.cosplayer.cosplay', ['cosplayer' => $cosplayer])
     </section>
-    <section>{{ $posts->links() }}</section>
 @endsection

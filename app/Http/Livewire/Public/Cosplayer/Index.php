@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
 
     public $search = '';
+    public $paginate = 20;
 
     public function updatingSearch()
     {
@@ -21,7 +22,7 @@ class Index extends Component
         return view('livewire.public.cosplayer.index', [
             'cosplayers' => CosplayerModel::where('name', 'like', '%'.$this->search.'%')
                                             ->orderBy('created_at', 'desc')
-                                            ->paginate(20),
+                                            ->paginate($this->paginate),
         ]);
     }
 }

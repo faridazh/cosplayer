@@ -29,13 +29,15 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()->schema([
-                    Forms\Components\FileUpload::make('avatar')
-                        ->avatar()
-                        ->directory('uploads/avatar'),
-                ])->columns(1),
-                Forms\Components\Card::make()
+                Forms\Components\Section::make('User Data')
                     ->schema([
+                        Forms\Components\FileUpload::make('avatar')
+                            ->rules(['required', 'image', 'max:1024'])
+                            ->image()
+                            ->directory('uploads/avatar')
+                            ->hint('Fixed resize to 150 x 150 pixels.')
+                            ->hintIcon('heroicon-o-exclamation')
+                            ->hintColor('warning'),
                         Forms\Components\TextInput::make('username')
                             ->rules(['required', 'min:5', 'max:30'])
                             ->unique(ignoreRecord: true)
@@ -67,15 +69,14 @@ class UserResource extends Resource
                             }),
 //                        Forms\Components\Toggle::make('2fa')
 //                            ->label('Two Factor Authentication')
-//                            ->nullable()
-                    ])
-                    ->columns(2),
-                Forms\Components\Card::make()
+//                            ->nullable(),
+                ]),
+                Forms\Components\Section::make('User Roles')
                     ->schema([
                         Forms\Components\MultiSelect::make('roles')
                             ->searchable()
                             ->relationship('roles', 'name')
-                    ])->columns(1),
+                    ]),
             ]);
     }
 

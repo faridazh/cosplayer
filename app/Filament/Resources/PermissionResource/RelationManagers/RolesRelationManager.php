@@ -17,33 +17,12 @@ class RolesRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
-
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\BadgeColumn::make('name'),
                 Tables\Columns\BadgeColumn::make('guard_name'),
-            ])
-            ->filters([
-                //
-            ])
-            ->headerActions([
-//                Tables\Actions\CreateAction::make(),
-            ])
-            ->actions([
-//                Tables\Actions\EditAction::make(),
-//                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-//                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

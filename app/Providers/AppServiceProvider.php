@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Filament\Forms;
 use Filament\Facades\Filament;
 use Filament\Navigation\NavigationGroup;
 use Illuminate\Support\ServiceProvider;
@@ -35,18 +36,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Filament::serving(function () {
-            Filament::registerScripts([
-                (new \Illuminate\Foundation\Vite())(['resources/js/filament/app.js']),
-            ]);
-            Filament::registerStyles([
-                (new \Illuminate\Foundation\Vite())(['resources/css/filament/app.css']),
-            ]);
             Filament::registerNavigationGroups([
                 NavigationGroup::make()->label('Accounts'),
                 NavigationGroup::make()->label('Logs')->collapsed(),
                 NavigationGroup::make()->label('Settings')->collapsed(),
                 NavigationGroup::make()->label('System')->collapsed(),
             ]);
+        });
+        Forms\Components\Card::configureUsing(function (Forms\Components\Card $card): void {
+            $card->columns(1);
         });
     }
 }

@@ -11,6 +11,10 @@ class Index extends Component
     use WithPagination;
 
     public $search = '';
+    public $is_hidden = false;
+    public $is_approved = true;
+    public $is_nsfw = true;
+    public $paginate = 20;
 
     public function updatingSearch()
     {
@@ -21,8 +25,11 @@ class Index extends Component
     {
         return view('livewire.public.cosplay.index', [
             'posts' => CosplayModel::where('title', 'like', '%'.$this->search.'%')
-                                    ->orderBy('created_at', 'desc')
-                                    ->paginate(20),
+                ->where('is_hidden', $this->is_hidden)
+                ->where('is_approved', $this->is_approved)
+                ->where('is_nsfw', $this->is_nsfw)
+                ->orderBy('created_at', 'desc')
+                ->paginate($this->paginate),
         ]);
     }
 }

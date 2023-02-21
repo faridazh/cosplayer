@@ -57,12 +57,9 @@ class ActivityResource extends Resource
 
                         Textarea::make('description')
                             ->label(__('filament-logger::filament-logger.resource.label.description'))
-                            ->rows(2)
-                            ->columnSpan(2),
-                    ])
-                        ->columns(2),
-                ])
-                    ->columnSpan(['sm' => 3]),
+                            ->rows(2),
+                    ]),
+                ]),
 
                 Group::make([
                     Card::make([
@@ -116,8 +113,7 @@ class ActivityResource extends Resource
 
                         return $schema;
                     }),
-            ])
-            ->columns(['sm' => 4, 'lg' => null]);
+            ]);
     }
 
     public static function table(Table $table): Table

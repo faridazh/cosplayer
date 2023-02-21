@@ -13,9 +13,9 @@ class EditPermission extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
-            Actions\ForceDeleteAction::make(),
-            Actions\RestoreAction::make(),
+//            Actions\DeleteAction::make(),
+//            Actions\ForceDeleteAction::make(),
+//            Actions\RestoreAction::make(),
         ];
     }
 

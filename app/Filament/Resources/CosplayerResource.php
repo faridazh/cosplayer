@@ -26,11 +26,11 @@ class CosplayerResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+                Forms\Components\Section::make('Image')
                     ->schema([
                         Forms\Components\FileUpload::make('avatar')
                             ->rules(['required', 'image', 'max:1024'])
-                            ->avatar()
+                            ->image()
                             ->required()
                             ->directory('uploads/cosplayer/avatar')
                             ->hint('Fixed resize to 250 x 250 pixels.')
@@ -44,8 +44,8 @@ class CosplayerResource extends Resource
                             ->hint('Fixed resize to 1000 x 300 pixels.')
                             ->hintIcon('heroicon-o-exclamation')
                             ->hintColor('warning'),
-                    ])->columns(1),
-                Forms\Components\Card::make()
+                    ]),
+                Forms\Components\Section::make('Cosplayer Account & Roles')
                     ->schema([
                         Forms\Components\Select::make('user_id')
                             ->label('User')
@@ -55,8 +55,8 @@ class CosplayerResource extends Resource
                             ->relationship('user', 'username'),
                         Forms\Components\MultiSelect::make('roles')
                             ->relationship('roles', 'name')
-                    ])->columns(2),
-                Forms\Components\Card::make()
+                    ]),
+                Forms\Components\Section::make('Data')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->rules(['required', 'string', 'max:100'])
@@ -70,39 +70,47 @@ class CosplayerResource extends Resource
                         Forms\Components\MarkdownEditor::make('description')
                             ->columnSpanFull()
                             ->rules(['nullable', 'string', 'max:5000']),
-                        Forms\Components\Section::make('Social Media')
-                            ->statePath('social')
-                            ->schema([
-                                Forms\Components\TextInput::make('facebook')
-                                    ->label('Facebook')
-                                    ->rules(['nullable', 'url']),
-                                Forms\Components\TextInput::make('instagram')
-                                    ->label('Instagram')
-                                    ->rules(['nullable', 'url']),
-                                Forms\Components\TextInput::make('twitter')
-                                    ->label('Twitter')
-                                    ->rules(['nullable', 'url']),
-                            ]),
-                        Forms\Components\Section::make('Shop')
-                            ->statePath('shop')
-                            ->schema([
-                                Forms\Components\TextInput::make('gumroad')
-                                    ->label('Gumroad')
-                                    ->rules(['nullable', 'url']),
-                                Forms\Components\TextInput::make('karyakarsa')
-                                    ->label('Karyakarsa')
-                                    ->rules(['nullable', 'url']),
-                                Forms\Components\TextInput::make('ko-fi')
-                                    ->label('Ko-fi')
-                                    ->rules(['nullable', 'url']),
-                                Forms\Components\TextInput::make('onlyfans')
-                                    ->label('Onlyfans')
-                                    ->rules(['nullable', 'url']),
-                                Forms\Components\TextInput::make('trakteer')
-                                    ->label('Trakteer')
-                                    ->rules(['nullable', 'url']),
-                            ]),
-                    ])->columns(2),
+                    ]),
+                Forms\Components\Section::make('Social Media')
+                    ->statePath('social')
+                    ->schema([
+                        Forms\Components\TextInput::make('facebook')
+                            ->label('Facebook')
+                            ->rules(['nullable', 'url', 'starts_with:https://facebook.com/'])
+                            ->hint('Start With: https://facebook.com/'),
+                        Forms\Components\TextInput::make('instagram')
+                            ->label('Instagram')
+                            ->rules(['nullable', 'url', 'starts_with:https://instagram.com/'])
+                            ->hint('Start With: https://instagram.com/'),
+                        Forms\Components\TextInput::make('twitter')
+                            ->label('Twitter')
+                            ->rules(['nullable', 'url', 'starts_with:https://twitter.com/'])
+                            ->hint('Start With: https://twitter.com/'),
+                    ]),
+                Forms\Components\Section::make('Shop')
+                    ->statePath('shop')
+                    ->schema([
+                        Forms\Components\TextInput::make('gumroad')
+                            ->label('Gumroad')
+                            ->rules(['nullable', 'url', 'starts_with:https://gumroad.com/'])
+                            ->hint('Start With: https://gumroad.com/'),
+                        Forms\Components\TextInput::make('karyakarsa')
+                            ->label('Karyakarsa')
+                            ->rules(['nullable', 'url', 'starts_with:https://karyakarsa.com/'])
+                            ->hint('Start With: https://karyakarsa.com/'),
+                        Forms\Components\TextInput::make('ko-fi')
+                            ->label('Ko-fi')
+                            ->rules(['nullable', 'url', 'starts_with:https://ko-fi.com/'])
+                            ->hint('Start With: https://ko-fi.com/'),
+                        Forms\Components\TextInput::make('onlyfans')
+                            ->label('Onlyfans')
+                            ->rules(['nullable', 'url', 'starts_with:https://onlyfans.com/'])
+                            ->hint('Start With: https://onlyfans.com/'),
+                        Forms\Components\TextInput::make('trakteer')
+                            ->label('Trakteer')
+                            ->rules(['nullable', 'url', 'starts_with:https://trakteer.id/'])
+                            ->hint('Start With: https://trakteer.id/'),
+                    ]),
             ]);
     }
 

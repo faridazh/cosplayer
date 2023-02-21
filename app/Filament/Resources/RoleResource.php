@@ -29,22 +29,23 @@ class RoleResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->rules(['required', 'alpha-dash', 'min:3', 'max:15']),
-//                    ->disabled(static fn ($state) => $state == 'super-admin'),
+                            ->rules(['required', 'alpha-dash', 'min:3', 'max:15'])
+                            ->dehydrated(!auth()->user()->hasRole('super-admin')),
                         Forms\Components\Select::make('guard_name')
                             ->rules('required', 'in:web,api')
                             ->options([
                                 'web' => 'Web',
                                 'api' => 'API',
                             ])
-                            ->default('web'),
-//                            ->disabled(!auth()->user()->hasRole('super-admin')),
-                    ])->columns(2),
+                            ->default('web')
+                            ->dehydrated(!auth()->user()->hasRole('super-admin')),
+                    ]),
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\MultiSelect::make('permissions')
-                            ->relationship('permissions', 'name'),
-                    ])->columns(1),
+                            ->relationship('permissions', 'name')
+                            ->dehydrated(!auth()->user()->hasRole('super-admin')),
+                    ]),
             ]);
     }
 
