@@ -6,9 +6,6 @@ yarn-error.log
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
-!app/storage/public/assets
-!app/storage/public/assets/avatar
-!app/storage/public/assets/avatar/default_avatar.png
 
 # Laravel 5 & Lumen specific
 public/storage
@@ -29,6 +26,10 @@ Homestead.json
 .DS_Store
 
 # Vite Build
-/public/assets/
-/public/build/
-/public/uploads/
+public/build
+
+public/assets
+public/uploads
+
+.idea
+.idea/*
