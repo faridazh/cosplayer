@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -50,7 +51,7 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    
+
     public function liked()
     {
         return PostLike::where('user_id', auth()->user()->id)->where('post_id', $this->id)->first();
@@ -65,5 +66,10 @@ class Post extends Model
     {
         $this->attributes['likes'] = $this->totalLikes()->count();
         $this->save();
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 }

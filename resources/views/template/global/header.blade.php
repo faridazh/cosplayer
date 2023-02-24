@@ -28,7 +28,7 @@
             <div class="relative ml-3" x-data="{ profileOpen: false }">
                 <div>
                     <button @click="profileOpen = !profileOpen" @click.outside="profileOpen = false" type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                        <img class="h-8 w-8 rounded-full" src="{{ asset('uploads/avatar/' . auth()->user()->avatar) }}" onerror="this.src='{{ asset('assets/avatar/default_avatar.png') }}'">
+                        <img class="h-8 w-8 rounded-full" src="{{ asset(auth()->user()->avatar) }}" onerror="this.src='{{ asset('assets/avatar/default_avatar.png') }}'">
                     </button>
                 </div>
                 <div class="dropdown right-0 w-48 origin-top-right" x-show="profileOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">

@@ -16,11 +16,19 @@
                         <div class="font-semibold text-xl">{{ $post->cosplayer->name }} - {{ $post->title }}</div>
                         <div class="text-xs text-gray-500">Posted by {{ $post->author->username }} &bull; {{ \Carbon\Carbon::parse($post->created_at)->locale(config('app.locale'))->diffForHumans() }}</div>
                     </div>
-                    <article class="prose prose-neutral my-5 min-h-[200px] text-sm">
-                        <div class="font-medium">Description</div>
-                        @if(!empty($post->description))
-                            {!! Str::markdown($post->description) !!}
-                        @endif
+                    <article class="prose prose-neutral my-5 min-h-[200px]">
+                        <div class="mb-5">
+                            <div class="font-medium">Description</div>
+                            @if(!empty($post->description))
+                                {!! Str::markdown($post->description) !!}
+                            @endif
+                        </div>
+                        <div class="mt-5">
+                            <div class="font-medium">About Me</div>
+                            @if(!empty($post->cosplayer->description))
+                                {!! Str::markdown($post->cosplayer->description) !!}
+                            @endif
+                        </div>
                     </article>
                     @auth
                         @livewire('public.cosplay.show.likes', ['post' => $post])
@@ -33,24 +41,28 @@
                         </div>
                     @endauth
                     <div class="border-t my-5"></div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <img class="w-12 h-12 rounded-full border" src="{{ asset($post->cosplayer->avatar) }}" loading="lazy">
-                            <div class="space-y-1.5">
-                                <div class="font-semibold">
-                                    <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">{{ $post->cosplayer->name }}</a>
-                                </div>
-                                @if(!empty($post->cosplayer->getRoleNames()->first()))
-                                    @foreach($post->cosplayer->getRoleNames() as $role)
-                                        <div class="inline-flex items-center py-0.5 px-2 border border-primary text-primary rounded text-xs capitalize">{{ $role }}</div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div>
-                        <div>
-                            <button class="inline-flex items-center py-1 px-2 border border-primary text-primary rounded capitalize">Follow</button>
-                        </div>
+                    <div class="space-y-5">
+                        <div class="font-medium">Comments</div>
+                        @livewire('public.cosplay.show.comment.index', ['post' => $post])
                     </div>
+{{--                    <div class="flex items-center justify-between">--}}
+{{--                        <div class="flex items-center space-x-2">--}}
+{{--                            <img class="w-12 h-12 rounded-full border" src="{{ asset($post->cosplayer->avatar) }}" loading="lazy">--}}
+{{--                            <div class="space-y-1.5">--}}
+{{--                                <div class="font-semibold">--}}
+{{--                                    <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">{{ $post->cosplayer->name }}</a>--}}
+{{--                                </div>--}}
+{{--                                @if(!empty($post->cosplayer->getRoleNames()->first()))--}}
+{{--                                    @foreach($post->cosplayer->getRoleNames() as $role)--}}
+{{--                                        <div class="inline-flex items-center py-0.5 px-2 border border-primary text-primary rounded text-xs capitalize">{{ $role }}</div>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <button class="inline-flex items-center py-1 px-2 border border-primary text-primary rounded capitalize">Follow</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

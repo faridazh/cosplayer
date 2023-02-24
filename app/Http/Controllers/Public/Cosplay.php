@@ -32,6 +32,6 @@ class Cosplay extends Controller
 
     public function show(CosplayModel $post)
     {
-        return redirect()->route('public.cosplay.showWithSlugWithCosplayer', [$post->id, $post->slug, $post->cosplayer->slug]);
+        return redirect()->route('public.cosplay.showWithSlug', [$post->id, $post->slug, $post->cosplayer->slug]);
     }
 }
