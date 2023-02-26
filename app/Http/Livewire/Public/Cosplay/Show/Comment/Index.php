@@ -31,13 +31,17 @@ class Index extends Component
     protected $listeners = ['refreshLikeComment' => '$refresh'];
 
     protected $rules = [
-        'content' => ['required', 'string', 'min:10', 'max:500'],
+        'newComment' => ['required', 'string', 'min:10', 'max:500'],
+    ];
+
+    protected $validationAttributes = [
+        'newComment' => 'comment',
     ];
 
     public function addComment()
     {
-        if (auth()->user()->can('write-comment'))
-//        if (auth()->user()->id == 2)
+//        dd($this->newComment);
+        if (auth()->user()->can('create-comment'))
         {
             $this->validate();
 
@@ -49,8 +53,6 @@ class Index extends Component
             ]);
             $this->comments->push($createComment);
             $this->newComment = null;
-
-//            return redirect()->to('#c-'.$createComment->id);
         }
         else
         {

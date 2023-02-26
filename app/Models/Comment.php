@@ -12,12 +12,16 @@ class Comment extends Model
         'user_id',
         'post_id',
         'content',
+        'is_approved',
+        'is_hidden',
     ];
 
     protected $casts = [
         'user_id' => 'integer',
-        'post_id',
-        'content',
+        'post_id' => 'integer',
+        'content' => 'string',
+        'is_approved' => 'boolean',
+        'is_hidden' => 'boolean',
     ];
 
     public function user(): BelongsTo

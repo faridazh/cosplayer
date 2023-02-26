@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('content');
             $table->bigInteger('likes')->default(0);
 
+            $table->boolean('is_approved')->default(true);
+            $table->boolean('is_hidden')->default(false);
+
             $table->timestamps();
         });
     }

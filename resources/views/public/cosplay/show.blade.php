@@ -24,6 +24,13 @@
                             @endif
                         </div>
                         <div class="mt-5">
+                            @foreach($post->shop as $key => $shop)
+                                @if(!empty($shop))
+                                    <a href="{{ $shop }}" class="text-sm md:text-base" target="_blank">{{ Str::title($key) }}</a>
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="mt-5">
                             <div class="font-medium">About Me</div>
                             @if(!empty($post->cosplayer->description))
                                 {!! Str::markdown($post->cosplayer->description) !!}
@@ -45,24 +52,6 @@
                         <div class="font-medium">Comments</div>
                         @livewire('public.cosplay.show.comment.index', ['post' => $post])
                     </div>
-{{--                    <div class="flex items-center justify-between">--}}
-{{--                        <div class="flex items-center space-x-2">--}}
-{{--                            <img class="w-12 h-12 rounded-full border" src="{{ asset($post->cosplayer->avatar) }}" loading="lazy">--}}
-{{--                            <div class="space-y-1.5">--}}
-{{--                                <div class="font-semibold">--}}
-{{--                                    <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">{{ $post->cosplayer->name }}</a>--}}
-{{--                                </div>--}}
-{{--                                @if(!empty($post->cosplayer->getRoleNames()->first()))--}}
-{{--                                    @foreach($post->cosplayer->getRoleNames() as $role)--}}
-{{--                                        <div class="inline-flex items-center py-0.5 px-2 border border-primary text-primary rounded text-xs capitalize">{{ $role }}</div>--}}
-{{--                                    @endforeach--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div>--}}
-{{--                            <button class="inline-flex items-center py-1 px-2 border border-primary text-primary rounded capitalize">Follow</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -71,7 +60,7 @@
                 <div class="flex flex-col mx-auto bg-white rounded-lg">
                     <div class="bg-white rounded-lg border shadow pb-5">
                         <img class="w-full h-14 md:h-20 object-cover rounded-t-lg" src="{{ asset($post->cosplayer->cover) }}" loading="lazy">
-                        <div class="flex flex-col items-center -mt-8 md:-mt-12">
+                        <div class="flex flex-col items-center -mt-8 md:-mt-12 px-5">
                             <img class="w-16 h-16 md:w-24 md:h-24 rounded-full border-4 border-white" src="{{ asset($post->cosplayer->avatar) }}" loading="lazy">
                             <div class="text-center mt-5">
                                 <div class="font-semibold text-base md:text-lg">
@@ -85,10 +74,19 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="flex items-center justify-center space-x-5 mt-5">
-                                @foreach($post->cosplayer->social as $key => $social)
-                                    <a href="{{ $social }}" target="_blank"><i class="fab {{ 'fa-'.$key }} fa-fw"></i></a>
-                                @endforeach
+                            <div class="mt-5 space-y-3">
+                                <div class="text-center space-x-5">
+                                    @foreach($post->cosplayer->social as $key => $social)
+                                        <a href="{{ $social }}" target="_blank"><i class="fab {{ 'fa-'.$key }} fa-fw"></i></a>
+                                    @endforeach
+                                </div>
+                                <div class="text-center space-x-2">
+                                    @foreach($post->cosplayer->shop as $key => $shop)
+                                        @if(!empty($shop))
+                                            <a href="{{ $shop }}" class="text-sm whitespace-nowrap" target="_blank">{{ Str::title($key) }}</a>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

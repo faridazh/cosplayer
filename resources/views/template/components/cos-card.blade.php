@@ -13,20 +13,18 @@
     </div>
     <div class="information">
         <div class="cosplayer">
-            <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">
-                <img src="{{ asset($post->cosplayer->avatar) }}" loading="lazy"/>
-            </a>
+{{--            <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">--}}
+{{--                <img src="{{ asset($post->cosplayer->avatar) }}" loading="lazy"/>--}}
+{{--            </a>--}}
             <div class="overflow-hidden">
-                <div class="text-sm font-semibold truncate">
-                    <a href="{{ route('public.cosplayer.showWithSlug', [$post->cosplayer->id, $post->cosplayer->slug]) }}">{{ $post->cosplayer->name }}</a>
-                </div>
-                <div class="text-xs text-gray-400">{{ $post->created_at }}</div>
+                <div class="text-xs text-gray-400 font-semibold">Posted</div>
+                <div class="text-sm">{{ \Carbon\Carbon::parse($post->created_at)->locale(config('app.locale'))->diffForHumans() }}</div>
             </div>
         </div>
         <div class="stats">
             <div class="count">
+                <span class="font-medium">{{ number_format($post->likes) }}</span>
                 <i class="far fa-thumbs-up text-primary"></i>
-                <p class="font-medium">{{ number_format($post->likes) }}</p>
             </div>
         </div>
     </div>

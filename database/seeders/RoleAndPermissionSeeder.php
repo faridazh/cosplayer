@@ -61,6 +61,14 @@ class RoleAndPermissionSeeder extends Seeder
             'access-logs-viewer',
             // Application Health
             'access-health-check',
+            // Comment
+            'view-any-comment',
+            'view-comment',
+            'create-comment',
+            'update-comment',
+            'delete-comment',
+            'restore-comment',
+            'force-delete-comment',
         ];
 
         foreach ($permissions as $permission) {
@@ -93,6 +101,13 @@ class RoleAndPermissionSeeder extends Seeder
             'view-activity-log',
             // Application Health
             'access-health-check',
+            // Comment
+            'view-any-comment',
+            'view-comment',
+            'create-comment',
+            'update-comment',
+            'delete-comment',
+            'restore-comment',
         ]);
 
         User::find(1)->syncRoles('super-admin');
