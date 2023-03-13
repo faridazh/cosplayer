@@ -15,16 +15,31 @@ class WebStatsSeedeer extends Seeder
         $data = [
             [
                 'attribute' => 'users',
+                'value' => 0,
                 'created_at' => $dateTime,
                 'updated_at' => $dateTime,
             ],
             [
                 'attribute' => 'roles',
+                'value' => 0,
                 'created_at' => $dateTime,
                 'updated_at' => $dateTime,
             ],
             [
                 'attribute' => 'permissions',
+                'value' => 0,
+                'created_at' => $dateTime,
+                'updated_at' => $dateTime,
+            ],
+            [
+                'attribute' => 'posts',
+                'value' => 0,
+                'created_at' => $dateTime,
+                'updated_at' => $dateTime,
+            ],
+            [
+                'attribute' => 'cosplayers',
+                'value' => 0,
                 'created_at' => $dateTime,
                 'updated_at' => $dateTime,
             ],

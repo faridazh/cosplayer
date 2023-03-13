@@ -41,7 +41,7 @@ class Index extends Component
     public function addComment()
     {
 //        dd($this->newComment);
-        if (auth()->user()->can('create-comment'))
+        if (auth()->user()->hasVerifiedEmail())
         {
             $this->validate();
 
@@ -53,11 +53,6 @@ class Index extends Component
             ]);
             $this->comments->push($createComment);
             $this->newComment = null;
-        }
-        else
-        {
-            Alert::toast('You do not have permission!', 'error');
-            return redirect()->route('public.cosplay.show', $this->post->id);
         }
     }
 

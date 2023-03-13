@@ -25,11 +25,11 @@ class Stars extends Component
 
         if (empty($this->cosplayer->stared()))
         {
-            $givestar->star(auth()->user()->id, $this->cosplayer->id);
+            $givestar->star($this->cosplayer->id, auth()->user()->id);
             $this->cosplayer->countStars();
         }
         else {
-            $givestar->unstar(auth()->user()->id, $this->cosplayer->id);
+            $givestar->unstar($this->cosplayer->id, auth()->user()->id);
             $this->cosplayer->countStars();
         }
     }

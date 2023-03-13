@@ -1,6 +1,6 @@
 <div>
     <div class="space-y-3">
-        @can('view-any-comment')
+        @auth
             @forelse($comments as $comment)
                 <a class="absolute top-20" id="{{ 'cid' . $comment->id }}"></a>
                 <div class="flex justify-start items-start space-x-3">
@@ -31,10 +31,10 @@
             @empty
                 <div class="text-center text-sm text-gray-400 my-10">No Comment</div>
             @endforelse
-        @endcanany
+        @endauth
     </div>
     <div class="mt-10">
-        @can('create-comment')
+        @if(auth()->user()->hasVerifiedEmail())
             <div class="flex space-x-2">
                 <img class="h-10 w-10 rounded-full border border-2" src="{{ asset(auth()->user()->avatar) }}" loading="lazy" onerror="this.src='{{ asset('assets/avatar/default_avatar.png') }}'">
                 <div class="w-full">
@@ -45,6 +45,8 @@
             <div class="flex items-center justify-end mt-2">
                 <button class="btn btn-primary md:w-fit" wire:click="addComment" wire:loading.class="btn-disabled" wire:loading.class.remove="btn-primary" wire:loading.attr="disabled">Comment</button>
             </div>
-        @endcan
+        @else
+
+        @endif
     </div>
 </div>
